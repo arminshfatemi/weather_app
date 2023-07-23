@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>main page</title>
+</head>
+<body>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="city" placeholder="write your city name.." style="width: 200px">
+    <input type="submit" value="Submit">
+
+</form>
+<div>
+    {% if country_code and coordinate and temp and pressure and humidity %}
+    <h4><span>Country Code: {{ country_code }}</span></h4>
+    <h4><span>Coordinate: {{ coordinate }}</span></h4>
+    <h4><span>Temperature: {{ temp }}</span></h4>
+    <h4><span>Pressure: {{ pressure }}</span></h4>
+    <h4><span>humidity: {{ humidity }}</span></h4>
+    <h4><span>description: {{ description }}</span></h4>
+    {% else %}
+    <div>
+        <P>write a city to show current weather</P>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
