@@ -15,19 +15,36 @@
 
 </form>
 <div>
-    {% if country_code and coordinate and temp and pressure and humidity %}
+    {% if weather_data %}
     <h4><span>Country Code: {{ country_code }}</span></h4>
     <h4><span>Coordinate: {{ coordinate }}</span></h4>
     <h4><span>Temperature: {{ temp }}</span></h4>
     <h4><span>Pressure: {{ pressure }}</span></h4>
     <h4><span>humidity: {{ humidity }}</span></h4>
     <h4><span>description: {{ description }}</span></h4>
+        <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="{{ description }}">
     {% else %}
     <div>
         <P>write a city to show current weather</P>
     </div>
     {% endif %}
 </div>
+<div>
+    {% if week_forcast %}
+        {% for data in week_forcast %}
+        <div>
+            <h4>{{ day }}</h4>
+             <h4>min temp: {{ min_temp }}</h4>
+             <h4>max temp: {{ max_temp }}</h4>
+             <h4>{{ description }}</h4>
+            <img src="http://openweathermap.org/img/w/{{ icon }}.png" alt="{{ description }}">
 
+        </div>
+        {% endfor %}
+    {% else %}
+      <p>no content to show in weekly forcast</p>
+    {% endif %}
+
+</div>
 </body>
 </html>
